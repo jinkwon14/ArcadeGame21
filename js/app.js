@@ -28,10 +28,8 @@ var rand_gen = function(num) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
     this.x = this.x +this.speed*dt;
+    // TODO: handles collision with the player
 };
 
 // Draw the enemy on the screen, required method for game
@@ -40,18 +38,16 @@ Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Now write your own player class
-// This class requires an update(), render() and
-// a handleInput() method.
 var Player = function() {
   this.sprite = 'images/char-boy.png';
   // Set the initial position.
-  this.x = 0;
-  this.y = 0;
+  this.x = 200;
+  this.y = 370;
 };
 
 Player.prototype.update = function(dt) {
   // TODO: The update method for the Player (can be similar to the one for the Enemy)
+
 };
 
 Player.prototype.render = function() {
@@ -62,13 +58,13 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(allowedKeys) {
 
   if (allowedKeys === 'left') {
-    this.x = this.x - 1;
+    this.x = this.x - 100;
   } else if (allowedKeys === 'right') {
-    this.x = this.x + 1;
+    this.x = this.x + 100;
   } else if (allowedKeys === 'up') {
-    this.y = this.y - 1;
+    this.y = this.y - 80;
   } else if (allowedKeys === 'down') {
-    this.y = this.y + 1;
+    this.y = this.y + 80;
   } else {
     this.y = this.y;
   }
