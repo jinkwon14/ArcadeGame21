@@ -38,11 +38,13 @@ Enemy.prototype.update = function(dt) {
       this.enemy_random_spawn();
     } else {
       this.x = this.x +this.speed*dt;
-    };
+    }
 
-    // TODO: handles collision with the player
-    if (this.x > player.x - 50 && this.x < player.x + 50 ) {
+    // Handles collision with the player
+    if (this.y > player.y - 50 && this.y < player.y + 50 &&
+      this.x > player.x - 50 && this.x < player.x + 50 ) {
       player.y = 370;
+      // TODO: relevant action needs to follow resulting from collision
     }
 };
 
