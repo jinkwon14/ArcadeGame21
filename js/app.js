@@ -5,19 +5,20 @@ var Enemy = function() {
 
     // sets the initial position
     this.x = 0;
-    // generates random number from 1 to 4
-    var pos = rand_gen(3);
 
-    this.y = 60 + pos*80;
+    // generates a random number among 0, 1, 2 (3 numbers)
+    var rand_pos = rand_gen(3);
+    this.y = 60 + rand_pos*80;
     // this.y = 60;
     // this.y = 140;
     // this.y = 210;
 
-    // TODO: Set the enemy Speed.
-    // this.speed =
+    // Set the enemy Speed.
+    var rand_speed = rand_gen(4)
+    this.speed = 50*(1+rand_speed);
 };
 
-// ***Helper function that generates number from 0 to num-1
+// *** Helper function that generates number from 0 to num-1
 var rand_gen = function(num) {
   var pos = Math.random();
   pos = Math.floor(pos/(1/num));
@@ -30,7 +31,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.x = this.x +1*dt;
+    this.x = this.x +this.speed*dt;
 };
 
 // Draw the enemy on the screen, required method for game
