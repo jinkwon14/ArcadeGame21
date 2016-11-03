@@ -1,17 +1,17 @@
 INTRODUCTION
 ------------
-This is remake of the classic Frogger game, introducing new characters and features. As part of the Udacity Front End Web Development Nano Degree, this game was written using Java Script Object Oriented Programming.
+This is a freshly redesigned version of the classic Frogger game, introducing new characters and features. As part of the Udacity Front End Web Development Nano Degree, this game was written implementing Java Script Object Oriented Programming.
 
 RUN INSTRUCTION
 ------------
-1. Download and unzip the FEND_Jin-Kwon.zip file.
+1. Download and unzip FEND_Jin-Kwon.zip file.
 2. Launch index.html with a web browser.
 
 GAME INSTRUCTIONS
 ------------
-**Goal:** Move player to the river without colliding with a bug.  
-**One simple direction:** Use arrow keys to move the player   front, back, left, and right.  
+**Goal:** Move player to a river without colliding into a bug.  
+**One simple direction:** Use arrow keys to move a player   front, back, left, and right.  
 **Features:**
-* Bugs, three upon starting, will spawn from the left at random speeds and positions.
-* When the player hit a bug, player will restart from the starting position.
-* When the player reaches the river, one additional bug will be added.
+* Bugs, three upon starting the game, will spawn from the left at random speeds and positions.
+* When player hits a bug, player will die and restart from the starting position.
+* When player reaches a river, the number of bugs will increase by one.
