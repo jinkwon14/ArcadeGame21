@@ -1,6 +1,17 @@
-frontend-nanodegree-arcade-game
-===============================
+INTRODUCTION
+------------
+This is remake of the classic Frogger game, introducing new characters and features. As part of the Udacity Front End Web Development Nano Degree, this game was written using Java Script Object Oriented Programming.
 
-Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
+RUN INSTRUCTION
+------------
+1. Download and unzip the FEND_Jin-Kwon.zip file.
+2. Launch index.html with a web browser.
 
-For detailed instructions on how to get started, check out this [guide](https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub?embedded=true).
+GAME INSTRUCTIONS
+------------
+**Goal:** Move player to the river without colliding with a bug.  
+**One simple direction:** Use arrow keys to move the player   front, back, left, and right.  
+**Features:**
+* Bugs, three upon starting, will spawn from the left at random speeds and positions.
+* When the player hit a bug, player will restart from the starting position.
+* When the player reaches the river, one additional bug will be added.
