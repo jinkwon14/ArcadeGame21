@@ -1,17 +1,27 @@
 // Enemies our player must avoid
 var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+    // load images
     this.sprite = 'images/enemy-bug.png';
 
-    // TODO: Set the initial position.
-    this.x = 1;
-    this.y = 0;
+    // sets the initial position
+    this.x = 0;
+    // generates random number from 1 to 4
+    var pos = rand_gen(3);
+
+    this.y = 60 + pos*80;
+    // this.y = 60;
+    // this.y = 140;
+    // this.y = 210;
+
     // TODO: Set the enemy Speed.
     // this.speed =
+};
+
+// ***Helper function that generates number from 0 to num-1
+var rand_gen = function(num) {
+  var pos = Math.random();
+  pos = Math.floor(pos/(1/num));
+  return pos;
 };
 
 // Update the enemy's position, required method for game
@@ -25,7 +35,7 @@ Enemy.prototype.update = function(dt) {
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
-    this.update(3);
+    // this.update(2);
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -35,8 +45,8 @@ Enemy.prototype.render = function() {
 var Player = function() {
   this.sprite = 'images/char-boy.png';
   // Set the initial position.
-  this.x = 100;
-  this.y = 100;
+  this.x = 0;
+  this.y = 0;
 };
 
 Player.prototype.update = function(dt) {
@@ -51,13 +61,13 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(allowedKeys) {
 
   if (allowedKeys === 'left') {
-    this.x = this.x + 1;
-  } else if (allowedKeys === 'right') {
     this.x = this.x - 1;
+  } else if (allowedKeys === 'right') {
+    this.x = this.x + 1;
   } else if (allowedKeys === 'up') {
-    this.y = this.y + 1;
+    this.y = this.y - 1;
   } else if (allowedKeys === 'down') {
-    this.y = this.y -1;
+    this.y = this.y + 1;
   } else {
     this.y = this.y;
   }
