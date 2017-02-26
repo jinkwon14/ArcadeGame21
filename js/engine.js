@@ -25,8 +25,8 @@ var Engine = (function(global) {
         ctx = canvas.getContext('2d'),
         lastTime;
 
-    canvas.width = 505;
-    canvas.height = 606;
+    canvas.width = 700;
+    canvas.height = 800;
     canvas.style = "border:1px solid #000000;";
     doc.body.appendChild(canvas);
 
@@ -108,16 +108,36 @@ var Engine = (function(global) {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
          */
-        var rowImages = [
-                'images/water-block.png',   // Top row is water
-                'images/stone-block.png',   // Row 1 of 3 of stone
-                'images/stone-block.png',   // Row 2 of 3 of stone
-                'images/stone-block.png',   // Row 3 of 3 of stone
-                'images/grass-block.png',   // Row 1 of 2 of grass
-                'images/grass-block.png'    // Row 2 of 2 of grass
+        var topRowImages = [
+                'images/topleft.png',
+                'images/top.png',   // Top row is water
+                'images/top.png',   // Top row is water
+                'images/top.png',   // Top row is water
+                'images/top.png',   // Top row is water
+                'images/top.png',   // Top row is water
+                'images/topright.png'
             ],
-            numRows = 6,
-            numCols = 5,
+            rowImages = [
+              'images/left.png',
+              'images/center.png',   // Top row is water
+              'images/center.png',   // Top row is water
+              'images/center.png',   // Top row is water
+              'images/center.png',   // Top row is water
+              'images/center.png',   // Top row is water
+              'images/right.png'
+            ],
+            bottomRowImages = [
+              'images/bottomleft.png',
+              'images/bottom.png',   // Top row is water
+              'images/bottom.png',   // Top row is water
+              'images/bottom.png',   // Top row is water
+              'images/bottom.png',   // Top row is water
+              'images/bottom.png',   // Top row is water
+              'images/bottomright.png'
+            ] ,
+
+            numRows = 8,
+            numCols = 7,
             row, col;
 
         /* Loop through the number of rows and columns we've defined above
@@ -126,6 +146,13 @@ var Engine = (function(global) {
          */
         for (row = 0; row < numRows; row++) {
             for (col = 0; col < numCols; col++) {
+              if (row == 0) {
+                ctx.drawImage(Resources.get(topRowImages[col]), col * 100, row * 100);
+              } else if (row == 7) {
+                ctx.drawImage(Resources.get(bottomRowImages[col]), col * 100, row * 100);
+              } else {
+                ctx.drawImage(Resources.get(rowImages[col]), col * 100, row * 100);
+              }
                 /* The drawImage function of the canvas' context element
                  * requires 3 parameters: the image to draw, the x coordinate
                  * to start drawing and the y coordinate to start drawing.
@@ -133,7 +160,6 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
 
@@ -168,11 +194,16 @@ var Engine = (function(global) {
      * all of these images are properly loaded our game will start.
      */
     Resources.load([
-        'images/stone-block.png',
-        'images/water-block.png',
-        'images/grass-block.png',
-        'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/topleft.png',
+        'images/top.png',
+        'images/topright.png',
+        'images/left.png',
+        'images/tile.png',
+        'images/right.png',
+        'images/bottomleft.png',
+        'images/bottom.png',
+        'images/bottomright.png',
+        'images/center.png'
     ]);
     Resources.onReady(init);
 
