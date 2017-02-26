@@ -92,6 +92,7 @@ var Engine = (function(global) {
      * render methods.
      */
     function updateEntities(dt) {
+        gem.update();
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
@@ -179,6 +180,12 @@ var Engine = (function(global) {
         });
 
         player.render();
+
+        gem.render();
+
+        allHearts.forEach(function(heart) {
+            heart.render();
+        });
     }
 
     /* This function does nothing but it could have been a good place to
@@ -212,8 +219,8 @@ var Engine = (function(global) {
         'images/enemy_back.png',
         'images/Gem_Blue.png',
         'images/Gem_Green.png',
-        'images/Gem_Orange.png'
-
+        'images/Gem_Orange.png',
+        'images/Heart.png'
     ]);
     Resources.onReady(init);
 
