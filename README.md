@@ -7,6 +7,10 @@ RUN INSTRUCTION
 1. Download and unzip FEND_Jin-Kwon.zip file.
 2. Launch index.html with a web browser.
 
+or  
+
+[Click!](https://kwonjh90.github.io/FEND-ArcadeGame/)
+
 GAME INSTRUCTIONS
 ------------
 **Goal:** Move player to a river without colliding into a bug.  
