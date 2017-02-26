@@ -37,8 +37,9 @@ Enemy.prototype.enemy_random_spawn = function() {
     var rand_pos_x = rand_gen(3);
     // Initial x positions determine when they appear on the game board
     this.x = -100 * (rand_pos_x + 1); //+1 to ensure spawning outside board
-    var rand_pos_y = rand_gen(3);
-    this.y = 60 + rand_pos_y * 80;
+    var rand_pos_y = Math.floor(Math.random()*750);
+    // this.y = 60 + rand_pos_y * 80;
+    this.y = rand_pos_y;
     // from trial and error, valid y positions are 60, 140, 210
 };
 
@@ -84,9 +85,13 @@ Gem.prototype.update = function() {
   if (this.y > player_down_edge && this.y < player_up_edge &&
       this.x > player_left_edge && this.x < player_right_edge) {
         this.rand_pos_color();
+        allEnemies.push(new Enemy());
+        GemCount += 1;
+        // player.display_status();
   }
 };
 
+var GemCount = 0;
 
 // Generates num number of random integer from 0
 var rand_gen = function(num) {
@@ -131,6 +136,25 @@ Enemy.prototype.update = function(dt) {
         // TODO: add more features resulting from collision
         // collision();
     }
+
+    if (allHearts.length == 0) {
+      player.gameover();
+    }
+};
+
+Player.prototype.gameover = function() {
+  player.initial_pos();
+  allEnemies = [];
+  gem.x = -300;
+  gem.y = -300;
+
+};
+
+
+Player.prototype.render_score = function() {
+  ctx.font = "15px Arial";
+  ctx.strokeText("Number of Enemy Jellies:  " + allEnemies.length,30, 30);
+  ctx.strokeText("Number of Gems Collected:  " + GemCount,30, 50);
 };
 
 Enemy.prototype.render = function() {
@@ -156,7 +180,7 @@ Player.prototype.handleInput = function(allowedKeys) {
     } else if (allowedKeys === 'right') {
         this.x + 50 < board_edge_right ? this.x += 50 : this.nono();
     } else if (allowedKeys === 'up') {
-        this.y - 50 > board_edge_top ? this.y -= 50 : this.win();
+        this.y - 50 > board_edge_top ? this.y -= 50 : this.nono();
         this.sprite = 'images/Jelly_back.png';
     } else if (allowedKeys === 'down') {
         this.y + 50 < board_edge_bottom ? this.y += 50 : this.nono();
@@ -169,17 +193,6 @@ Player.prototype.handleInput = function(allowedKeys) {
 // TODO: notify invalid moves by either shacking or flashing
 Player.prototype.nono = function() {
 
-};
-
-// resulting outcomes when the player wins (reaches the water)
-Player.prototype.win = function() {
-    // add an enemy to add difficulty
-    allEnemies.push(new Enemy());
-
-    // player go return back to initial position
-    this.initial_pos();
-
-    // TODO: add more rewarding award for the winner if player accomplishes the goal set number of times
 };
 
 // initiate player and enemies

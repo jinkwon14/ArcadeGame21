@@ -186,6 +186,8 @@ var Engine = (function(global) {
         allHearts.forEach(function(heart) {
             heart.render();
         });
+
+        player.render_score();
     }
 
     /* This function does nothing but it could have been a good place to
