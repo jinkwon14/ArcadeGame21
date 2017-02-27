@@ -133,6 +133,8 @@ Enemy.prototype.update = function(dt) {
         this.x > player_left_edge && this.x < player_right_edge) {
         allHearts.pop();
         player.initial_pos();
+        allEnemies = [new Enemy(), new Enemy()];
+
         // TODO: add more features resulting from collision
         // collision();
     }
